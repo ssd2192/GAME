@@ -164,9 +164,9 @@ namespace Game
         {
             SQLiteConnection sqlite_conn;
             sqlite_conn = CreateConnection();
-            // CreateTable(sqlite_conn);
-            InsertData(sqlite_conn);
-            ReadData(sqlite_conn);
+            CreateTable(sqlite_conn);
+            //InsertData(sqlite_conn);
+            //ReadData(sqlite_conn);
         }
 
         static SQLiteConnection CreateConnection()
@@ -187,16 +187,11 @@ namespace Game
 
         static void CreateTable(SQLiteConnection conn)
         {
-
             SQLiteCommand sqlite_cmd;
-            string Createsql = "CREATE TABLE SampleTable (Col1 VARCHAR(20), Col2 INT)";
-            string Createsql1 = "CREATE TABLE SampleTable1 (Col1 VARCHAR(20), Col2 INT)";
+            string Createsql = "CREATE TABLE GameBoard (PropertyID INT, OwnerName VARCHAR(20), PropertyValue INT)";
             sqlite_cmd = conn.CreateCommand();
             sqlite_cmd.CommandText = Createsql;
             sqlite_cmd.ExecuteNonQuery();
-            sqlite_cmd.CommandText = Createsql1;
-            sqlite_cmd.ExecuteNonQuery();
-
         }
 
         static void InsertData(SQLiteConnection conn)
